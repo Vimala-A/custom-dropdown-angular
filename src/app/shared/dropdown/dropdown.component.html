@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="dropdown-header">
+        <p>Design: {{labelText}}</p>
+    </div>
+    <div class="dropdown-selection" (click)="openDropDown()">
+        <div [ngClass]="{'selected-opt-text': selectedOption, 'title': '!selectedOption'}"> {{(selectedOption) ? (selectedOption.value) :'Select an option' }} </div>
+        <div class="action-arrow"><i class="arrow" [ngClass]="isShow ? 'up': 'down'"></i></div>
+    </div>
+    <div class="dropdown-body" *ngIf="isShow">
+        <div class="dd-body-inner" [ngClass]="{'show-y-scroll': options.length > 7 }">
+            <div class="list-items" *ngFor="let opt of options" (mouseover)="onItemHover(opt)" (click)="onSelectItem(opt)">
+                <p> {{opt?.value}}</p>
+            </div>
+        </div>
+    </div>
+</div>
